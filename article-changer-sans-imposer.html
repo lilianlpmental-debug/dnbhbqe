@@ -1,0 +1,161 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Changer sans imposer — LP Mental</title>
+<meta name="description" content="Comment transformer un collectif sportif sans heurter son identité : observation, appui sur l'existant, changement progressif." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,800;0,900;1,400;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet" />
+<style>
+  :root{--bg:#fff;--bg-soft:#fbf8fb;--ink:#1a0f1c;--ink-soft:#2d1f30;--ink-mute:#6b6070;--line:#ece4ee;--accent:#6b1846;--accent-2:#a02670;--accent-deep:#3d0a26;--accent-soft:#f5e8ee;}
+  *{box-sizing:border-box;margin:0;padding:0;}
+  html{scroll-behavior:smooth;scroll-padding-top:84px;}
+  body{background:var(--bg);color:var(--ink);font-family:'Inter',sans-serif;-webkit-font-smoothing:antialiased;}
+  a{color:inherit;text-decoration:none;} img{display:block;max-width:100%;} button{font-family:inherit;cursor:pointer;border:none;background:none;}
+  .container{max-width:1280px;margin:0 auto;padding:0 40px;width:100%;}
+  .site-header{position:fixed;top:0;left:0;right:0;z-index:100;padding:18px 40px;display:flex;align-items:center;justify-content:space-between;background:rgba(255,255,255,0.94);backdrop-filter:blur(14px);box-shadow:0 1px 0 var(--line);}
+  .brand{display:flex;align-items:center;gap:12px;}
+  .brand-mark{width:46px;height:46px;display:grid;place-items:center;overflow:hidden;}
+  .brand-mark img{width:100%;height:100%;object-fit:contain;}
+  .brand-name{font-size:9px;font-weight:700;letter-spacing:0.22em;text-transform:uppercase;color:var(--ink);line-height:1.4;}
+  .brand-sub{font-family:'Playfair Display',serif;font-style:italic;font-size:11px;color:var(--ink-mute);margin-top:2px;}
+  .nav-links{display:flex;gap:30px;align-items:center;}
+  .nav-link{font-size:14px;font-weight:400;color:var(--ink-soft);padding:8px 2px;transition:color .2s;}
+  .nav-link:hover,.nav-link.active{color:var(--accent);}
+  .nav-cta{background:var(--accent);color:white;padding:9px 18px;border-radius:999px;font-size:13px;font-weight:500;display:inline-flex;align-items:center;gap:8px;transition:transform .2s,background .2s;}
+  .nav-cta:hover{transform:translateY(-1px);background:var(--accent-deep);}
+  .nav-toggle{display:none;flex-direction:column;gap:5px;padding:8px;z-index:120;}
+  .nav-toggle span{width:24px;height:2px;background:var(--ink);transition:transform .3s,opacity .3s;}
+  .nav-open .nav-toggle span{background:#fff;}
+  .nav-open .nav-toggle span:nth-child(1){transform:translateY(7px) rotate(45deg);}
+  .nav-open .nav-toggle span:nth-child(2){opacity:0;}
+  .nav-open .nav-toggle span:nth-child(3){transform:translateY(-7px) rotate(-45deg);}
+  .art-hero{padding:140px 0 50px;background:var(--bg-soft);border-bottom:1px solid var(--line);}
+  .art-crumb{font-size:13px;color:var(--ink-mute);margin-bottom:22px;}
+  .art-crumb a:hover{color:var(--accent);}
+  .art-cat{display:inline-block;font-size:11px;letter-spacing:0.18em;text-transform:uppercase;color:var(--accent);font-weight:700;margin-bottom:18px;}
+  .art-title{font-family:'Inter',sans-serif;font-weight:300;font-size:clamp(32px,4.4vw,54px);line-height:1.1;letter-spacing:-0.03em;max-width:900px;margin-bottom:20px;}
+  .art-title em{font-family:'Playfair Display',serif;font-style:italic;font-weight:600;color:var(--accent);}
+  .art-meta{font-size:14px;color:var(--ink-mute);}
+  .art-body{padding:64px 0 90px;}
+  .art-wrap{max-width:760px;margin:0 auto;}
+  .art-wrap .lead{font-size:21px;line-height:1.6;color:var(--ink);font-weight:300;margin-bottom:36px;letter-spacing:-0.01em;}
+  .art-wrap h2{font-family:'Inter',sans-serif;font-weight:600;font-size:28px;letter-spacing:-0.02em;color:var(--ink);margin:48px 0 18px;line-height:1.2;}
+  .art-wrap h3{font-family:'Playfair Display',serif;font-style:italic;font-weight:700;font-size:23px;color:var(--accent);margin:36px 0 14px;}
+  .art-wrap p{font-size:17px;line-height:1.75;color:var(--ink-soft);margin-bottom:20px;}
+  .art-wrap ul{margin:0 0 22px;padding-left:0;list-style:none;display:flex;flex-direction:column;gap:12px;}
+  .art-wrap li{font-size:16.5px;line-height:1.6;color:var(--ink-soft);padding-left:26px;position:relative;}
+  .art-wrap li::before{content:'';position:absolute;left:4px;top:10px;width:7px;height:7px;border-radius:50%;background:var(--accent);}
+  .art-wrap strong{color:var(--ink);font-weight:600;}
+  .pullquote{font-family:'Playfair Display',serif;font-style:italic;font-size:23px;line-height:1.5;color:var(--ink);border-left:3px solid var(--accent);padding:6px 0 6px 26px;margin:34px 0;}
+  .pullquote span{display:block;font-family:'Inter',sans-serif;font-style:normal;font-size:14px;color:var(--ink-mute);margin-top:14px;font-weight:500;}
+  .ref-card{background:var(--accent-soft);border-radius:14px;padding:24px 26px;margin:28px 0;}
+  .ref-card .rc-tag{font-size:12px;letter-spacing:0.06em;text-transform:uppercase;color:var(--accent);font-weight:700;margin-bottom:8px;}
+  .ref-card p{font-size:16px;line-height:1.65;color:var(--ink-soft);margin:0;}
+  .biblio{margin-top:50px;padding-top:30px;border-top:1px solid var(--line);}
+  .biblio h2{font-size:20px;margin-bottom:18px;}
+  .biblio p{font-size:14px;line-height:1.6;color:var(--ink-mute);margin-bottom:14px;}
+  .biblio em{color:var(--ink-soft);}
+  .art-back{margin-top:50px;}
+  .art-back a{display:inline-flex;align-items:center;gap:10px;font-size:14px;font-weight:500;color:var(--accent);}
+  .site-footer{background:#1a0511;color:rgba(255,255,255,0.82);padding:70px 0 30px;}
+  .foot-grid{display:grid;grid-template-columns:1.6fr 1fr 1fr 1.2fr;gap:48px;margin-bottom:50px;}
+  .foot-brand .brand{color:white;} .foot-brand .brand-name{color:white;} .foot-brand .brand-sub{color:rgba(255,255,255,0.7);}
+  .foot-brand p{margin-top:22px;font-size:14px;line-height:1.6;color:rgba(255,255,255,0.6);max-width:320px;}
+  .foot-col h5{font-size:10px;text-transform:uppercase;letter-spacing:0.22em;color:rgba(255,255,255,0.5);margin-bottom:20px;font-weight:600;}
+  .foot-col ul{list-style:none;display:flex;flex-direction:column;gap:12px;}
+  .foot-col li{font-size:14px;color:rgba(255,255,255,0.8);}
+  .foot-col a:hover{color:white;}
+  .foot-contact{display:flex;flex-direction:column;gap:12px;font-size:14px;}
+  .foot-contact .row{display:flex;align-items:center;gap:12px;}
+  .foot-contact .icon{width:28px;height:28px;border-radius:50%;background:rgba(255,255,255,0.08);display:grid;place-items:center;flex-shrink:0;}
+  .foot-bottom{border-top:1px solid rgba(255,255,255,0.1);padding-top:24px;display:flex;justify-content:space-between;align-items:center;font-size:12px;color:rgba(255,255,255,0.5);}
+  @media(max-width:1100px){.container{padding:0 22px;}.nav-toggle{display:flex;}
+    .nav-links{position:fixed;inset:0 0 0 auto;width:min(80vw,320px);background:#2d0820;flex-direction:column;align-items:flex-start;justify-content:center;gap:28px;padding:40px;transform:translateX(100%);transition:transform .35s ease;z-index:110;}
+    .nav-open .nav-links{transform:translateX(0);box-shadow:-20px 0 60px rgba(0,0,0,.3);}.nav-backdrop{position:fixed;inset:0;background:rgba(20,8,16,.5);opacity:0;visibility:hidden;transition:opacity .35s;z-index:105;}.nav-open .nav-backdrop{opacity:1;visibility:visible;}body.nav-open{overflow:hidden;}.nav-link{color:rgba(255,255,255,0.9);font-size:18px;}.nav-cta{background:white;color:var(--accent-deep);}
+    .site-header{padding:14px 20px;}.foot-grid{grid-template-columns:1fr 1fr;gap:32px;}.art-hero{padding:110px 0 40px;}}
+
+  /* ===== Barre de navigation toujours lisible et stable ===== */
+  .site-header { background: rgba(255,255,255,0.97) !important; backdrop-filter: blur(14px); box-shadow: 0 1px 0 var(--line); }
+  .site-header .brand-name { color: var(--ink) !important; }
+  .site-header .brand-sub { color: var(--ink-mute) !important; }
+  .site-header .brand-mark .logo-white { display: none !important; }
+  .site-header .brand-mark .logo-dark { display: block !important; }
+  .site-header .nav-link { color: var(--ink-soft) !important; }
+  .site-header .nav-link:hover, .site-header .nav-link.active { color: var(--accent) !important; }
+  .site-header .nav-cta { background: var(--accent) !important; color: #fff !important; }
+  .site-header .nav-toggle span { background: var(--ink) !important; }
+  @media (max-width: 1100px) {
+    body.nav-open .nav-links .nav-link { color: rgba(255,255,255,0.92) !important; }
+    body.nav-open .nav-links .nav-link:hover, body.nav-open .nav-links .nav-link.active { color: #fff !important; }
+    body.nav-open .nav-links .nav-cta { background: #fff !important; color: var(--accent-deep) !important; }
+    body.nav-open .nav-toggle span { background: #fff !important; }
+  }
+
+  /* ===== Barre épinglée au-dessus de tout ===== */
+  .hero { isolation: auto !important; }
+  .site-header { position: fixed !important; top: 0; left: 0; right: 0; z-index: 1000 !important; background: #fff !important; }
+</style>
+</head><body><header class="site-header" id="siteHeader">
+  <a href="index.html" class="brand"><div class="brand-mark"><img src="assets/photos/logo-noir.png" alt="LP Mental"/></div><div><div class="brand-name">LP Mental</div><div class="brand-sub">Préparation mentale</div></div></a>
+  <nav class="nav-links" id="navLinks">
+    <a href="index.html" class="nav-link">Accueil</a>
+    <a href="index.html#philosophie" class="nav-link">Méthode</a>
+    <a href="index.html#ressources" class="nav-link active">Ressources</a>
+    <a href="index.html#offres" class="nav-link">Accompagnements</a>
+    <a href="index.html#evaluation" class="nav-link">S'évaluer</a>
+    <a href="contact.html" class="nav-cta">Contact <span style="font-family:'Playfair Display',serif;font-style:italic;font-weight:700;">→</span></a>
+  </nav>
+  <button class="nav-toggle" id="navToggle" aria-label="Menu" aria-expanded="false"><span></span><span></span><span></span></button>
+  <div class="nav-backdrop" id="navBackdrop"></div>
+</header><section class="art-hero"><div class="container"><div class="art-crumb"><a href="index.html">Accueil</a> · <a href="index.html#articles">Articles</a> · Management</div><span class="art-cat">Management</span><h1 class="art-title">Changer sans imposer :<br/>un défi pour les <em>entraîneurs</em></h1><div class="art-meta">21 avril 2025 · 7 min de lecture</div></div></section><section class="art-body"><div class="container"><div class="art-wrap"><p class="lead">Lorsqu'un nouvel entraîneur prend ses fonctions dans une équipe, il doit répondre à un double enjeu : apporter sa vision tout en respectant l'identité du collectif.</p>
+  <p>Un club, c'est une culture qui s'est construite sur des années, parfois des décennies. Un projet qui ne prend pas en compte cette identité est souvent voué à l'échec.</p>
+  <p>Alors, comment transformer un collectif sans lui imposer une vision brutale ? Faut-il imposer un cadre strict au risque de créer des tensions ? Ou s'adapter en douceur, quitte à perdre en impact ?</p>
+  <h2>Pourquoi l'alignement culturel est un levier de performance</h2>
+  <p>Si une équipe refuse un changement, ce n'est pas forcément parce qu'il est mauvais, mais parce qu'il va à l'encontre de son identité.</p>
+  <div class="ref-card"><div class="rc-tag">Schein (2010) — La culture organisationnelle</div><p>Schein distingue trois niveaux de culture, qui influencent la manière dont un groupe fonctionne : les <strong>artefacts visibles</strong> (routines, organisation des entraînements, style de management), les <strong>valeurs déclarées</strong> (« nous misons sur la formation des jeunes ») et les <strong>postulats sous-jacents</strong> (croyances profondes, souvent implicites, qui dictent les comportements).</p></div>
+  <p>Un projet trop éloigné de ces repères va naturellement créer des tensions. À l'inverse, lorsqu'il s'appuie sur ce qui existe déjà, il devient plus facilement légitime.</p>
+  <div class="pullquote">« J'ai fait un diagnostic complet du club pendant un mois : j'étais en observation sur les séances d'entraînement, j'ai été sur les tournois, j'ai rencontré des familles, des personnes du Pays basque… »<span>Théo Sanchez — Podcast LP Mental</span></div>
+  <div class="ref-card"><div class="rc-tag">Kotter (2012) — Leading Change</div><p>Kotter montre que <strong>70 % des transformations échouent</strong> parce qu'elles ne prennent pas en compte la culture interne. Un changement perçu comme une rupture brutale est rejeté instinctivement ; introduit comme une continuité, il a bien plus de chances d'être accepté.</p></div>
+  <h2>Comment introduire du changement sans heurter un collectif</h2>
+  <p>Un collectif ne change pas simplement parce qu'une nouvelle stratégie arrive — encore moins si elle bouscule ses repères sans les respecter. Un bon entraîneur ne se contente pas d'avoir une vision : il sait créer les conditions pour qu'elle soit comprise, partagée et portée par le groupe. Cela passe par trois étapes clés.</p>
+  <h3>1. Observer et comprendre la culture du groupe</h3>
+  <p>La première erreur, en prenant un nouveau poste, c'est de vouloir tout structurer immédiatement. Or, dans toute organisation, il existe déjà des dynamiques informelles, des équilibres implicites et des routines intégrées.</p>
+  <div class="ref-card"><div class="rc-tag">Deci &amp; Ryan (2000) — Autodétermination</div><p>La motivation repose sur trois piliers : <strong>l'autonomie</strong> (sentir que l'on garde une part de contrôle), <strong>la compétence</strong> (se sentir capable dans le nouveau cadre) et <strong>l'appartenance sociale</strong> (conserver du lien avec le collectif). Un changement qui ignore ces besoins crée mécaniquement de la résistance.</p></div>
+  <p>Concrètement, cette phase d'observation peut prendre plusieurs formes :</p>
+  <ul><li>Observer sans intervenir dans un premier temps, en s'immergeant dans la vie du collectif : assister aux séances, échanger de manière informelle.</li><li>Identifier les figures d'influence et les dynamiques relationnelles, par exemple via un sociogramme.</li><li>Rencontrer les personnes-clés au-delà des seuls postes hiérarchiques : anciens membres, figures respectées, relais de terrain.</li></ul>
+  <h3>2. S'appuyer sur les points forts existants</h3>
+  <p>Changer, ce n'est pas repartir de zéro : c'est faire évoluer un système à partir de ses fondations. Le changement est plus facilement accepté lorsqu'il s'ancre dans ce que le groupe connaît déjà.</p>
+  <div class="ref-card"><div class="rc-tag">Sweller (2011) — Charge cognitive</div><p>Le cerveau a une capacité limitée à traiter de nouvelles informations. Submergé de nouveautés en décalage avec ses repères, l'individu décroche ou rejette. Plus un changement ressemble à du familier, plus il est facile à intégrer.</p></div>
+  <ul><li>Identifier les éléments qui font l'unanimité : routines, styles de communication, valeurs partagées.</li><li>Construire un discours de continuité : « voici ce que vous avez construit, et voilà comment on peut aller plus loin ».</li><li>Rassurer : le changement ne signifie pas que tout ce qui précédait était mauvais — au contraire, on le respecte et on le renforce.</li></ul>
+  <h3>3. Introduire par petites touches et ajuster</h3>
+  <p>Même bien observé, un changement mal dosé reste un changement mal vécu. Le problème n'est pas l'idée, mais la manière dont elle est introduite.</p>
+  <div class="ref-card"><div class="rc-tag">Dweck (2006) — Growth Mindset</div><p>Les individus s'engagent mieux dans un changement vécu comme un processus d'ajustement progressif, et non comme une injonction à réussir du premier coup.</p></div>
+  <ul><li>Tester à petite échelle, sur des groupes pilotes (changer une logique de réunion avec 5 personnes avant de l'étendre à 40).</li><li>Recueillir des feedbacks réguliers : « Qu'est-ce qui vous a manqué ? Qu'est-ce que vous garderiez ? »</li><li>Viser l'appropriation progressive plutôt que la perfection immédiate.</li></ul>
+  <h2>Faire évoluer un collectif, c'est ajuster les repères, pas les effacer</h2>
+  <p>Le changement ne se décrète pas. Il se construit dans la nuance, dans l'écoute, dans l'intelligence de situation. Et surtout, il s'ancre dans ce que le collectif est déjà capable de faire, plutôt que dans ce qu'on voudrait qu'il devienne immédiatement.</p>
+  <div class="biblio"><h2>Références citées</h2>
+    <p><em>Schein, E. H. (2010).</em> Organizational Culture and Leadership (4e éd.). Jossey-Bass. — Les trois niveaux de culture : artefacts, valeurs, croyances implicites.</p>
+    <p><em>Kotter, J. P. (2012).</em> Leading Change. Harvard Business Review Press. — 70 % des changements échouent s'ils ignorent la culture interne.</p>
+    <p><em>Deci, E. L., &amp; Ryan, R. M. (2000).</em> The "What" and "Why" of Goal Pursuits. Psychological Inquiry, 11(4), 227–268. — Autonomie, compétence, appartenance.</p>
+    <p><em>Sweller, J. (2011).</em> Cognitive Load Theory. Psychology of Learning and Motivation, 55, 37–76. — Surcharge cognitive et rejet du changement.</p>
+    <p><em>Dweck, C. S. (2006).</em> Mindset: The New Psychology of Success. Random House. — Le changement progressif (growth mindset).</p>
+  </div><div class="art-back"><a href="index.html#articles">← Tous les articles</a></div></div></div></section><footer class="site-footer">
+  <div class="container"><div class="foot-grid">
+    <div class="foot-brand"><a href="index.html" class="brand"><div class="brand-mark"><img src="assets/photos/logo-blanc.png" alt="LP Mental"/></div><div><div class="brand-name">LP Mental</div><div class="brand-sub">Préparation mentale</div></div></a>
+      <p>Organisme spécialisé dans la préparation mentale appliquée au sport et à l'accompagnement des entraîneurs.</p></div>
+    <div class="foot-col"><h5>Le site</h5><ul><li><a href="index.html">Accueil</a></li><li><a href="index.html#philosophie">Ma méthode</a></li><li><a href="index.html#offres">Accompagnements</a></li><li><a href="contact.html">Contact</a></li></ul></div>
+    <div class="foot-col"><h5>Ressources</h5><ul><li><a href="index.html#podcast">Podcast LP Mental</a></li><li><a href="index.html#articles">Articles</a></li><li><a href="https://www.linkedin.com/in/lilian-pierre/" target="_blank" rel="noopener">LinkedIn</a></li></ul></div>
+    <div class="foot-col"><h5>Contact</h5><div class="foot-contact">
+      <div class="row"><div class="icon"><svg width="12" height="12" viewBox="0 0 24 24" fill="none"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.37 1.9.72 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.35 1.85.59 2.81.72A2 2 0 0 1 22 16.92Z" stroke="white" stroke-width="1.6"/></svg></div>06 26 85 26 80</div>
+      <div class="row"><div class="icon"><svg width="12" height="12" viewBox="0 0 24 24" fill="none"><rect x="2" y="4" width="20" height="16" rx="2" stroke="white" stroke-width="1.6"/><path d="m2 7 10 6 10-6" stroke="white" stroke-width="1.6"/></svg></div>Lilian.lpmental@gmail.com</div>
+      <div class="row"><div class="icon"><svg width="12" height="12" viewBox="0 0 24 24" fill="none"><path d="M12 22s8-7.5 8-13a8 8 0 0 0-16 0c0 5.5 8 13 8 13Z" stroke="white" stroke-width="1.6"/><circle cx="12" cy="9" r="2.5" stroke="white" stroke-width="1.6"/></svg></div>Pau · Nouvelle-Aquitaine</div>
+    </div></div>
+  </div><div class="foot-bottom"><div>© 2026 LP Mental — Lilian Pierre. Tous droits réservés.</div><div><a href="mentions-legales.html">Mentions légales</a> · <a href="mentions-legales.html#confidentialite">Confidentialité</a></div></div></div>
+</footer>
+<script>(function(){var t=document.getElementById('navToggle'),n=document.getElementById('navLinks');if(t&&n){t.addEventListener('click',function(){document.body.classList.toggle('nav-open');});n.querySelectorAll('a').forEach(function(a){a.addEventListener('click',function(){document.body.classList.remove('nav-open');});});}})();</script>
+
+<script>(function(){var b=document.getElementById("navBackdrop"),t=document.getElementById("navToggle");if(b){b.addEventListener("click",function(){document.body.classList.remove("nav-open");});}if(t){t.addEventListener("click",function(){t.setAttribute("aria-expanded",document.body.classList.contains("nav-open")?"true":"false");});}document.addEventListener("keydown",function(e){if(e.key==="Escape")document.body.classList.remove("nav-open");});})();</script>
+</body></html>

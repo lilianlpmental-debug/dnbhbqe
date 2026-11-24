@@ -1,0 +1,147 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Le sociogramme de Moreno — LP Mental</title>
+<meta name="description" content="Un outil pour cartographier les relations dans une équipe : cohésion sociale et opératoire, leaders émergents, joueurs isolés." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,800;0,900;1,400;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet" />
+<style>
+  :root{--bg:#fff;--bg-soft:#fbf8fb;--ink:#1a0f1c;--ink-soft:#2d1f30;--ink-mute:#6b6070;--line:#ece4ee;--accent:#6b1846;--accent-2:#a02670;--accent-deep:#3d0a26;--accent-soft:#f5e8ee;}
+  *{box-sizing:border-box;margin:0;padding:0;}
+  html{scroll-behavior:smooth;scroll-padding-top:84px;}
+  body{background:var(--bg);color:var(--ink);font-family:'Inter',sans-serif;-webkit-font-smoothing:antialiased;}
+  a{color:inherit;text-decoration:none;} img{display:block;max-width:100%;} button{font-family:inherit;cursor:pointer;border:none;background:none;}
+  .container{max-width:1280px;margin:0 auto;padding:0 40px;width:100%;}
+  .site-header{position:fixed;top:0;left:0;right:0;z-index:100;padding:18px 40px;display:flex;align-items:center;justify-content:space-between;background:rgba(255,255,255,0.94);backdrop-filter:blur(14px);box-shadow:0 1px 0 var(--line);}
+  .brand{display:flex;align-items:center;gap:12px;}
+  .brand-mark{width:46px;height:46px;display:grid;place-items:center;overflow:hidden;}
+  .brand-mark img{width:100%;height:100%;object-fit:contain;}
+  .brand-name{font-size:9px;font-weight:700;letter-spacing:0.22em;text-transform:uppercase;color:var(--ink);line-height:1.4;}
+  .brand-sub{font-family:'Playfair Display',serif;font-style:italic;font-size:11px;color:var(--ink-mute);margin-top:2px;}
+  .nav-links{display:flex;gap:30px;align-items:center;}
+  .nav-link{font-size:14px;font-weight:400;color:var(--ink-soft);padding:8px 2px;transition:color .2s;}
+  .nav-link:hover,.nav-link.active{color:var(--accent);}
+  .nav-cta{background:var(--accent);color:white;padding:9px 18px;border-radius:999px;font-size:13px;font-weight:500;display:inline-flex;align-items:center;gap:8px;transition:transform .2s,background .2s;}
+  .nav-cta:hover{transform:translateY(-1px);background:var(--accent-deep);}
+  .nav-toggle{display:none;flex-direction:column;gap:5px;padding:8px;z-index:120;}
+  .nav-toggle span{width:24px;height:2px;background:var(--ink);transition:transform .3s,opacity .3s;}
+  .nav-open .nav-toggle span{background:#fff;}
+  .nav-open .nav-toggle span:nth-child(1){transform:translateY(7px) rotate(45deg);}
+  .nav-open .nav-toggle span:nth-child(2){opacity:0;}
+  .nav-open .nav-toggle span:nth-child(3){transform:translateY(-7px) rotate(-45deg);}
+  .art-hero{padding:140px 0 50px;background:var(--bg-soft);border-bottom:1px solid var(--line);}
+  .art-crumb{font-size:13px;color:var(--ink-mute);margin-bottom:22px;}
+  .art-crumb a:hover{color:var(--accent);}
+  .art-cat{display:inline-block;font-size:11px;letter-spacing:0.18em;text-transform:uppercase;color:var(--accent);font-weight:700;margin-bottom:18px;}
+  .art-title{font-family:'Inter',sans-serif;font-weight:300;font-size:clamp(32px,4.4vw,54px);line-height:1.1;letter-spacing:-0.03em;max-width:900px;margin-bottom:20px;}
+  .art-title em{font-family:'Playfair Display',serif;font-style:italic;font-weight:600;color:var(--accent);}
+  .art-meta{font-size:14px;color:var(--ink-mute);}
+  .art-body{padding:64px 0 90px;}
+  .art-wrap{max-width:760px;margin:0 auto;}
+  .art-wrap .lead{font-size:21px;line-height:1.6;color:var(--ink);font-weight:300;margin-bottom:36px;letter-spacing:-0.01em;}
+  .art-wrap h2{font-family:'Inter',sans-serif;font-weight:600;font-size:28px;letter-spacing:-0.02em;color:var(--ink);margin:48px 0 18px;line-height:1.2;}
+  .art-wrap h3{font-family:'Playfair Display',serif;font-style:italic;font-weight:700;font-size:23px;color:var(--accent);margin:36px 0 14px;}
+  .art-wrap p{font-size:17px;line-height:1.75;color:var(--ink-soft);margin-bottom:20px;}
+  .art-wrap ul{margin:0 0 22px;padding-left:0;list-style:none;display:flex;flex-direction:column;gap:12px;}
+  .art-wrap li{font-size:16.5px;line-height:1.6;color:var(--ink-soft);padding-left:26px;position:relative;}
+  .art-wrap li::before{content:'';position:absolute;left:4px;top:10px;width:7px;height:7px;border-radius:50%;background:var(--accent);}
+  .art-wrap strong{color:var(--ink);font-weight:600;}
+  .pullquote{font-family:'Playfair Display',serif;font-style:italic;font-size:23px;line-height:1.5;color:var(--ink);border-left:3px solid var(--accent);padding:6px 0 6px 26px;margin:34px 0;}
+  .pullquote span{display:block;font-family:'Inter',sans-serif;font-style:normal;font-size:14px;color:var(--ink-mute);margin-top:14px;font-weight:500;}
+  .ref-card{background:var(--accent-soft);border-radius:14px;padding:24px 26px;margin:28px 0;}
+  .ref-card .rc-tag{font-size:12px;letter-spacing:0.06em;text-transform:uppercase;color:var(--accent);font-weight:700;margin-bottom:8px;}
+  .ref-card p{font-size:16px;line-height:1.65;color:var(--ink-soft);margin:0;}
+  .biblio{margin-top:50px;padding-top:30px;border-top:1px solid var(--line);}
+  .biblio h2{font-size:20px;margin-bottom:18px;}
+  .biblio p{font-size:14px;line-height:1.6;color:var(--ink-mute);margin-bottom:14px;}
+  .biblio em{color:var(--ink-soft);}
+  .art-back{margin-top:50px;}
+  .art-back a{display:inline-flex;align-items:center;gap:10px;font-size:14px;font-weight:500;color:var(--accent);}
+  .site-footer{background:#1a0511;color:rgba(255,255,255,0.82);padding:70px 0 30px;}
+  .foot-grid{display:grid;grid-template-columns:1.6fr 1fr 1fr 1.2fr;gap:48px;margin-bottom:50px;}
+  .foot-brand .brand{color:white;} .foot-brand .brand-name{color:white;} .foot-brand .brand-sub{color:rgba(255,255,255,0.7);}
+  .foot-brand p{margin-top:22px;font-size:14px;line-height:1.6;color:rgba(255,255,255,0.6);max-width:320px;}
+  .foot-col h5{font-size:10px;text-transform:uppercase;letter-spacing:0.22em;color:rgba(255,255,255,0.5);margin-bottom:20px;font-weight:600;}
+  .foot-col ul{list-style:none;display:flex;flex-direction:column;gap:12px;}
+  .foot-col li{font-size:14px;color:rgba(255,255,255,0.8);}
+  .foot-col a:hover{color:white;}
+  .foot-contact{display:flex;flex-direction:column;gap:12px;font-size:14px;}
+  .foot-contact .row{display:flex;align-items:center;gap:12px;}
+  .foot-contact .icon{width:28px;height:28px;border-radius:50%;background:rgba(255,255,255,0.08);display:grid;place-items:center;flex-shrink:0;}
+  .foot-bottom{border-top:1px solid rgba(255,255,255,0.1);padding-top:24px;display:flex;justify-content:space-between;align-items:center;font-size:12px;color:rgba(255,255,255,0.5);}
+  @media(max-width:1100px){.container{padding:0 22px;}.nav-toggle{display:flex;}
+    .nav-links{position:fixed;inset:0 0 0 auto;width:min(80vw,320px);background:#2d0820;flex-direction:column;align-items:flex-start;justify-content:center;gap:28px;padding:40px;transform:translateX(100%);transition:transform .35s ease;z-index:110;}
+    .nav-open .nav-links{transform:translateX(0);box-shadow:-20px 0 60px rgba(0,0,0,.3);}.nav-backdrop{position:fixed;inset:0;background:rgba(20,8,16,.5);opacity:0;visibility:hidden;transition:opacity .35s;z-index:105;}.nav-open .nav-backdrop{opacity:1;visibility:visible;}body.nav-open{overflow:hidden;}.nav-link{color:rgba(255,255,255,0.9);font-size:18px;}.nav-cta{background:white;color:var(--accent-deep);}
+    .site-header{padding:14px 20px;}.foot-grid{grid-template-columns:1fr 1fr;gap:32px;}.art-hero{padding:110px 0 40px;}}
+
+  /* ===== Barre de navigation toujours lisible et stable ===== */
+  .site-header { background: rgba(255,255,255,0.97) !important; backdrop-filter: blur(14px); box-shadow: 0 1px 0 var(--line); }
+  .site-header .brand-name { color: var(--ink) !important; }
+  .site-header .brand-sub { color: var(--ink-mute) !important; }
+  .site-header .brand-mark .logo-white { display: none !important; }
+  .site-header .brand-mark .logo-dark { display: block !important; }
+  .site-header .nav-link { color: var(--ink-soft) !important; }
+  .site-header .nav-link:hover, .site-header .nav-link.active { color: var(--accent) !important; }
+  .site-header .nav-cta { background: var(--accent) !important; color: #fff !important; }
+  .site-header .nav-toggle span { background: var(--ink) !important; }
+  @media (max-width: 1100px) {
+    body.nav-open .nav-links .nav-link { color: rgba(255,255,255,0.92) !important; }
+    body.nav-open .nav-links .nav-link:hover, body.nav-open .nav-links .nav-link.active { color: #fff !important; }
+    body.nav-open .nav-links .nav-cta { background: #fff !important; color: var(--accent-deep) !important; }
+    body.nav-open .nav-toggle span { background: #fff !important; }
+  }
+
+  /* ===== Barre épinglée au-dessus de tout ===== */
+  .hero { isolation: auto !important; }
+  .site-header { position: fixed !important; top: 0; left: 0; right: 0; z-index: 1000 !important; background: #fff !important; }
+</style>
+</head><body><header class="site-header" id="siteHeader">
+  <a href="index.html" class="brand"><div class="brand-mark"><img src="assets/photos/logo-noir.png" alt="LP Mental"/></div><div><div class="brand-name">LP Mental</div><div class="brand-sub">Préparation mentale</div></div></a>
+  <nav class="nav-links" id="navLinks">
+    <a href="index.html" class="nav-link">Accueil</a>
+    <a href="index.html#philosophie" class="nav-link">Méthode</a>
+    <a href="index.html#ressources" class="nav-link active">Ressources</a>
+    <a href="index.html#offres" class="nav-link">Accompagnements</a>
+    <a href="index.html#evaluation" class="nav-link">S'évaluer</a>
+    <a href="contact.html" class="nav-cta">Contact <span style="font-family:'Playfair Display',serif;font-style:italic;font-weight:700;">→</span></a>
+  </nav>
+  <button class="nav-toggle" id="navToggle" aria-label="Menu" aria-expanded="false"><span></span><span></span><span></span></button>
+  <div class="nav-backdrop" id="navBackdrop"></div>
+</header><section class="art-hero"><div class="container"><div class="art-crumb"><a href="index.html">Accueil</a> · <a href="index.html#articles">Articles</a> · Outils</div><span class="art-cat">Outils</span><h1 class="art-title">Le <em>sociogramme</em> de Moreno :<br/>lire les dynamiques de groupe</h1><div class="art-meta">20 mars 2025 · 4 min de lecture</div></div></section><section class="art-body"><div class="container"><div class="art-wrap"><p class="lead">Dans un contexte de travail collaboratif, il est essentiel de saisir les dynamiques de groupe. Le sociogramme se révèle alors un outil puissant qui permet de cartographier visuellement les relations entre vos joueurs.</p>
+  <p>Il offre une révélation des liens forts, des leaders émergents et des sportifs isolés au sein de l'équipe.</p>
+  <h2>Comprendre les relations pour agir sur la cohésion</h2>
+  <p>Comprendre ces relations est essentiel pour agir sur la <strong>cohésion opératoire</strong> et la <strong>cohésion sociale</strong>.</p>
+  <p>Vulgairement, la cohésion sociale concerne la capacité à bien s'entendre avec son coéquipier, tandis que la cohésion opératoire concerne davantage la capacité à collaborer avec lui dans le cadre d'un objectif précis.</p>
+  <p>De plus, le sociogramme peut être utilisé pour former des groupes efficients, favorisant la performance et l'intelligence collective de votre équipe — par exemple, pour constituer les groupes de travail en vue de réfléchir sur le projet de jeu.</p>
+  <h2>Comment réaliser cette évaluation</h2>
+  <p>On utilise un questionnaire remis aux joueurs, comprenant quatre questions :</p>
+  <ul>
+    <li>« Si tu avais à constituer un groupe de 3 personnes pour partir en vacances, qui choisirais-tu ? » → <strong>cohésion sociale positive</strong>.</li>
+    <li>« … qui refuserais-tu dans ton groupe ? » → <strong>cohésion sociale négative</strong>.</li>
+    <li>« Si tu avais à constituer un groupe de 3 personnes pour travailler à l'entraînement, qui choisirais-tu ? » → <strong>cohésion opératoire positive</strong>.</li>
+    <li>« … qui refuserais-tu dans ton groupe ? » → <strong>cohésion opératoire négative</strong>.</li>
+  </ul>
+  <p>L'analyse des réponses de chaque joueur permet ensuite de tracer quatre schémas, correspondant aux facteurs d'attraction — positifs ou négatifs — pour les deux types de cohésion. Une lecture visuelle qui rend immédiatement lisibles les équilibres et les tensions au sein du collectif.</p>
+  <div class="pullquote">Le sociogramme transforme une intuition de terrain en cartographie objective : qui s'attire, qui s'évite, qui entraîne le groupe — et qui en reste à la marge.</div>
+  <div class="biblio"><h2>Référence</h2>
+    <p><em>Moreno, J. L. (1934, rééd. 1993).</em> Who Shall Survive? Foundations of Sociometry, Group Psychotherapy and Sociodrama. — Origine de la méthode sociométrique et du sociogramme.</p>
+  </div><div class="art-back"><a href="index.html#articles">← Tous les articles</a></div></div></div></section><footer class="site-footer">
+  <div class="container"><div class="foot-grid">
+    <div class="foot-brand"><a href="index.html" class="brand"><div class="brand-mark"><img src="assets/photos/logo-blanc.png" alt="LP Mental"/></div><div><div class="brand-name">LP Mental</div><div class="brand-sub">Préparation mentale</div></div></a>
+      <p>Organisme spécialisé dans la préparation mentale appliquée au sport et à l'accompagnement des entraîneurs.</p></div>
+    <div class="foot-col"><h5>Le site</h5><ul><li><a href="index.html">Accueil</a></li><li><a href="index.html#philosophie">Ma méthode</a></li><li><a href="index.html#offres">Accompagnements</a></li><li><a href="contact.html">Contact</a></li></ul></div>
+    <div class="foot-col"><h5>Ressources</h5><ul><li><a href="index.html#podcast">Podcast LP Mental</a></li><li><a href="index.html#articles">Articles</a></li><li><a href="https://www.linkedin.com/in/lilian-pierre/" target="_blank" rel="noopener">LinkedIn</a></li></ul></div>
+    <div class="foot-col"><h5>Contact</h5><div class="foot-contact">
+      <div class="row"><div class="icon"><svg width="12" height="12" viewBox="0 0 24 24" fill="none"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.37 1.9.72 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.35 1.85.59 2.81.72A2 2 0 0 1 22 16.92Z" stroke="white" stroke-width="1.6"/></svg></div>06 26 85 26 80</div>
+      <div class="row"><div class="icon"><svg width="12" height="12" viewBox="0 0 24 24" fill="none"><rect x="2" y="4" width="20" height="16" rx="2" stroke="white" stroke-width="1.6"/><path d="m2 7 10 6 10-6" stroke="white" stroke-width="1.6"/></svg></div>Lilian.lpmental@gmail.com</div>
+      <div class="row"><div class="icon"><svg width="12" height="12" viewBox="0 0 24 24" fill="none"><path d="M12 22s8-7.5 8-13a8 8 0 0 0-16 0c0 5.5 8 13 8 13Z" stroke="white" stroke-width="1.6"/><circle cx="12" cy="9" r="2.5" stroke="white" stroke-width="1.6"/></svg></div>Pau · Nouvelle-Aquitaine</div>
+    </div></div>
+  </div><div class="foot-bottom"><div>© 2026 LP Mental — Lilian Pierre. Tous droits réservés.</div><div><a href="mentions-legales.html">Mentions légales</a> · <a href="mentions-legales.html#confidentialite">Confidentialité</a></div></div></div>
+</footer>
+<script>(function(){var t=document.getElementById('navToggle'),n=document.getElementById('navLinks');if(t&&n){t.addEventListener('click',function(){document.body.classList.toggle('nav-open');});n.querySelectorAll('a').forEach(function(a){a.addEventListener('click',function(){document.body.classList.remove('nav-open');});});}})();</script>
+
+<script>(function(){var b=document.getElementById("navBackdrop"),t=document.getElementById("navToggle");if(b){b.addEventListener("click",function(){document.body.classList.remove("nav-open");});}if(t){t.addEventListener("click",function(){t.setAttribute("aria-expanded",document.body.classList.contains("nav-open")?"true":"false");});}document.addEventListener("keydown",function(e){if(e.key==="Escape")document.body.classList.remove("nav-open");});})();</script>
+</body></html>
